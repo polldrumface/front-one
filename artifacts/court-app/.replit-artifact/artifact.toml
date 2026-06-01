@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Судебная коллегия Winslow"
+version = "1.0.0"
+id = "artifacts/court-app"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24714
+
+[services.development]
+run = "pnpm --filter @workspace/court-app run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/court-app", "run", "build" ]
+publicDir = "artifacts/court-app/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24714"
+BASE_PATH = "/"
