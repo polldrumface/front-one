@@ -4,8 +4,8 @@ import { Scale } from "lucide-react";
 
 export default function Login() {
   const handleLogin = () => {
-    // Принудительный переход на сервер
-    window.location.href = "/api/auth/discord";
+    const apiUrl = import.meta.env.VITE_API_URL || "";
+    window.location.href = `${apiUrl}/api/auth/discord`;
   };
 
   return (
