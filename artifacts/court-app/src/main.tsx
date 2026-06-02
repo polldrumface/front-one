@@ -3,8 +3,9 @@ import App from "./App";
 import "./index.css";
 import { setBaseUrl } from "@workspace/api-client-react";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+let apiUrl = import.meta.env.VITE_API_URL;
 if (apiUrl) {
+  if (!apiUrl.startsWith("http")) apiUrl = "https://" + apiUrl;
   setBaseUrl(apiUrl);
 }
 

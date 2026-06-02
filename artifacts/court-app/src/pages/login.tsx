@@ -4,7 +4,10 @@ import { Scale } from "lucide-react";
 
 export default function Login() {
   const handleLogin = () => {
-    const apiUrl = import.meta.env.VITE_API_URL || "";
+    let apiUrl = import.meta.env.VITE_API_URL || "";
+    if (apiUrl && !apiUrl.startsWith("http")) {
+      apiUrl = "https://" + apiUrl;
+    }
     window.location.href = `${apiUrl}/api/auth/discord`;
   };
 
